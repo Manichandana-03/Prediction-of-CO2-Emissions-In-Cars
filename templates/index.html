@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co2 Emission Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename='css/style.css'  )}}" />
+    <script src="{{url_for('static',filename='javascript/index.js')}}"></script>
+</head>
+<body>
+  <div class="background-car-img">
+   
+  
+    <div class="responsive-container">
+        
+    <div class="section1">
+        <form action="{{ url_for('predict')}}"  method="POST" class="form-class">
+          <label for="dropdown" class="label-item">Choose Car   </label>
+          <br />
+            <select class="dropdown-container" id="dropdown">
+              <option>AUDI</option>
+              <option>MARUTHI</option>
+              <option>MAHENDRA</option>
+              <option>TATA</option>
+              <option>FORD</option>
+              <option>BMW</option>
+              <option>HONDA</option>
+              <option>LAND ROVER</option>
+              <option>LAMBORGHINI</option>
+              <option>KIYA</option>
+              <option>JEEP</option>
+              <option>JAGUAR</option>
+              <option>HYUNDAI</option>
+              <option>MERCEDES-BENZ</option>
+              <option>ROLLS-ROYCE</option>
+              <option>TOYOTO</option>
+              <option>VOLVO</option>
+              <option>BUGATI</option>
+            </select>
+            <br/>
+            <label for="enginesize"  class="label-item"><span class="requierd">*</span>Engine Size(L) <span class="span-item">in range 1-7</span>  </label>
+            <br/>
+            <input type="number" min="1" max="7" name="enginesize"  id="enginesize" required class="input-class myslider" />
+            <br/>
+            <label for="cylinders" class="label-item"><span class="requierd">*</span>Cylinders <span class="span-item">choose any(4,6,8,10,12)</span></label>
+            <br />
+            <input type="number" min="2" max="12" step="2" name="cylinders" id="cylinders" required class="input-class" />
+            <br/>
+            <label for="cityConsumption" class="label-item"><span class="requierd">*</span>Fuel Consumption City (L/100km) <span class="span-item">in range 6-30</span> </label>
+            <br />
+            <input type="number" min="6" max="30" name="fuelconsumptioncity" id="cityConsumption" required class="input-class" />
+            <br/>
+            <label for="fuelConsumption" class="label-item"><span class="requierd">*</span>Fuel Consumption Hwy (L/100km) <span class="span-item" >in range 5-20</span> </label>
+            <br />
+            <input type="number" min="5" max="20" name="fuelConsumptionhwy" id="fuelConsumption" required class="input-class" />
+            <br/>
+            <label for="combConsumption" class="label-item"><span class="requierd">*</span>Fuel Consumption Comb (L/100km) <span class="span-item">in range 6-18</span> </label>
+            <br />
+            <input type="number" min="6" max="18" name="fuelconsumptioncomb" id="combConsumption"  required class="input-class" />
+            <br/>
+            <label for="combConsumptionMpg" class="label-item"><span class="requierd">*</span>Fuel Consumption Comb (mpg) <span class="span-item">in range 15-70</span> </label>
+            <br />
+            <input type="number" min="15" max="70" name="fuelconsumptioncombMpg" id="combConsumptionMgp" required class="input-class" />
+            <br/>
+            <button type="submit" value="submit" class="button-item">Predict CO2 </button>
+        </form>
+      </div>
+
+    <div class="section2">
+      
+      <h1 class="heading">Prediction of CO2 Emission in Cars</h1>
+    
+    <div class="prediction-container">
+      
+      <img src="../static/css/img2-removebg-preview.png" alt="prediction" class="prediction-img"/>
+      {% if prediction %}
+        <p class="prediction-color">{{prediction}} </p>
+      {% endif %}
+    </div>
+
+    </div>
+
+  </div>
+  </div>
+</body>
+</html>
